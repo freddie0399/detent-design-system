@@ -22,7 +22,7 @@ npx oxlint src/path/file.tsx  # lint one file
 
 After a dependency is added while the dev server runs, restart it with `npx vite --port 5173 --force`; otherwise each newly visited page triggers a re-optimise-and-reload.
 
-CI (`.github/workflows/ci.yml`, job **Verify**) runs strict tokens, lint, typecheck, build, then `git diff --exit-code` on the generated files `src/styles/tokens.css`, `registry.json` and `src/routeTree.gen.ts`. **Commit generated files** after `npm run build`. `main` is protected: changes go through a PR and Verify must pass. `origin` is the public repo; the `archive` remote is the private pre-release history and should not receive new work unless asked.
+CI (`.github/workflows/ci.yml`, job **Verify**) runs strict tokens, lint, typecheck, build, then `git diff --exit-code` on the generated files `src/styles/tokens.css`, `registry.json` and `src/routeTree.gen.ts`. **Commit generated files** after `npm run build`. `main` is protected: changes go through a PR and Verify must pass.
 
 ## Architecture
 
