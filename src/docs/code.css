@@ -1,0 +1,27 @@
+/* Syntax colours come from semantic text tokens that already pass the contrast
+   audit on sunken surfaces, so highlighting follows the brand and both themes. */
+.code-block,
+.code-block-fallback {
+  --shiki-foreground: var(--foreground);
+  --shiki-background: transparent;
+  --shiki-token-comment: var(--subtle-foreground);
+  --shiki-token-keyword: var(--info-subtle-foreground);
+  --shiki-token-string: var(--success-subtle-foreground);
+  --shiki-token-string-expression: var(--success-subtle-foreground);
+  --shiki-token-constant: var(--warning-subtle-foreground);
+  --shiki-token-function: var(--primary-subtle-foreground);
+  --shiki-token-parameter: var(--foreground);
+  --shiki-token-punctuation: var(--muted-foreground);
+  --shiki-token-link: var(--primary-subtle-foreground);
+}
+
+.code-block pre,
+.code-block-fallback {
+  overflow-x: auto;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  tab-size: 2;
+}

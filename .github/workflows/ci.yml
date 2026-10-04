@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A newer push to the same branch cancels the run it supersedes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      # Node 24 runs the token scripts (TypeScript) directly.
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Tokens — contrast and chart palette, every preset
+        run: npm run tokens -- --strict
+
+      - name: Lint (warnings fail)
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build — registry and site
+        run: npm run build
+
+      - name: Generated files are committed and current
+        run: |
+          git diff --exit-code -- src/styles/tokens.css registry.json src/routeTree.gen.ts || {
+            echo "::error::Generated files are out of date. Run 'npm run build' and commit the result."
+            exit 1
+          }
