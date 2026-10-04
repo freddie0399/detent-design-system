@@ -18,6 +18,7 @@ import { Route as ComponentsAvatarRouteImport } from './routes/components/avatar
 import { Route as ComponentsBadgeRouteImport } from './routes/components/badge'
 import { Route as ComponentsBreadcrumbRouteImport } from './routes/components/breadcrumb'
 import { Route as ComponentsButtonRouteImport } from './routes/components/button'
+import { Route as ComponentsButtonGroupRouteImport } from './routes/components/button-group'
 import { Route as ComponentsCalendarRouteImport } from './routes/components/calendar'
 import { Route as ComponentsCardRouteImport } from './routes/components/card'
 import { Route as ComponentsChartRouteImport } from './routes/components/chart'
@@ -106,6 +107,11 @@ const ComponentsBreadcrumbRoute = ComponentsBreadcrumbRouteImport.update({
 const ComponentsButtonRoute = ComponentsButtonRouteImport.update({
   id: '/components/button',
   path: '/components/button',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsButtonGroupRoute = ComponentsButtonGroupRouteImport.update({
+  id: '/components/button-group',
+  path: '/components/button-group',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsCalendarRoute = ComponentsCalendarRouteImport.update({
@@ -340,6 +346,7 @@ export interface FileRoutesByFullPath {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/breadcrumb': typeof ComponentsBreadcrumbRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/calendar': typeof ComponentsCalendarRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/chart': typeof ComponentsChartRoute
@@ -395,6 +402,7 @@ export interface FileRoutesByTo {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/breadcrumb': typeof ComponentsBreadcrumbRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/calendar': typeof ComponentsCalendarRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/chart': typeof ComponentsChartRoute
@@ -451,6 +459,7 @@ export interface FileRoutesById {
   '/components/badge': typeof ComponentsBadgeRoute
   '/components/breadcrumb': typeof ComponentsBreadcrumbRoute
   '/components/button': typeof ComponentsButtonRoute
+  '/components/button-group': typeof ComponentsButtonGroupRoute
   '/components/calendar': typeof ComponentsCalendarRoute
   '/components/card': typeof ComponentsCardRoute
   '/components/chart': typeof ComponentsChartRoute
@@ -508,6 +517,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/breadcrumb'
     | '/components/button'
+    | '/components/button-group'
     | '/components/calendar'
     | '/components/card'
     | '/components/chart'
@@ -563,6 +573,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/breadcrumb'
     | '/components/button'
+    | '/components/button-group'
     | '/components/calendar'
     | '/components/card'
     | '/components/chart'
@@ -618,6 +629,7 @@ export interface FileRouteTypes {
     | '/components/badge'
     | '/components/breadcrumb'
     | '/components/button'
+    | '/components/button-group'
     | '/components/calendar'
     | '/components/card'
     | '/components/chart'
@@ -674,6 +686,7 @@ export interface RootRouteChildren {
   ComponentsBadgeRoute: typeof ComponentsBadgeRoute
   ComponentsBreadcrumbRoute: typeof ComponentsBreadcrumbRoute
   ComponentsButtonRoute: typeof ComponentsButtonRoute
+  ComponentsButtonGroupRoute: typeof ComponentsButtonGroupRoute
   ComponentsCalendarRoute: typeof ComponentsCalendarRoute
   ComponentsCardRoute: typeof ComponentsCardRoute
   ComponentsChartRoute: typeof ComponentsChartRoute
@@ -783,6 +796,13 @@ declare module '@tanstack/react-router' {
       path: '/components/button'
       fullPath: '/components/button'
       preLoaderRoute: typeof ComponentsButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/button-group': {
+      id: '/components/button-group'
+      path: '/components/button-group'
+      fullPath: '/components/button-group'
+      preLoaderRoute: typeof ComponentsButtonGroupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/calendar': {
@@ -1106,6 +1126,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComponentsBadgeRoute: ComponentsBadgeRoute,
   ComponentsBreadcrumbRoute: ComponentsBreadcrumbRoute,
   ComponentsButtonRoute: ComponentsButtonRoute,
+  ComponentsButtonGroupRoute: ComponentsButtonGroupRoute,
   ComponentsCalendarRoute: ComponentsCalendarRoute,
   ComponentsCardRoute: ComponentsCardRoute,
   ComponentsChartRoute: ComponentsChartRoute,

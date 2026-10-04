@@ -43,6 +43,7 @@ export const NAV: NavSection[] = [
       { title: "Badge", to: "/components/badge" },
       { title: "Breadcrumb", to: "/components/breadcrumb" },
       { title: "Button", to: "/components/button" },
+      { title: "Button group", to: "/components/button-group" },
       { title: "Calendar", to: "/components/calendar" },
       { title: "Card", to: "/components/card" },
       { title: "Chart", to: "/components/chart" },

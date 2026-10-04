@@ -633,6 +633,26 @@
       ]
     },
     {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "http://localhost:5173/r/theme.json",
+        "http://localhost:5173/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
