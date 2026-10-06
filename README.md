@@ -104,21 +104,19 @@ npm run check      # what CI enforces: strict tokens, lint, typecheck
 
 ## Using it in an app
 
-Deploy `dist/` somewhere (the registry ships inside it at `/r`), building with the real URL:
-
-```bash
-REGISTRY_URL=https://detent.example.com/r npm run build
-```
-
-Then, in a consuming app:
+The docs site and registry are published at [detent-ui.com](https://detent-ui.com) (the registry is served from `/r`). In a consuming app:
 
 ```bash
 npx shadcn@latest init -b base -p nova
-npx shadcn@latest add https://detent.example.com/r/theme.json
-npx shadcn@latest add https://detent.example.com/r/button.json
+npx shadcn@latest add https://detent-ui.com/r/theme.json
+npx shadcn@latest add https://detent-ui.com/r/button.json
 ```
 
 Each component depends on `theme`, so adding any component also pulls in the tokens and fonts.
+
+### Deploying
+
+Cloudflare builds `main` with `npm run build` and serves `dist/` per `wrangler.jsonc` (static assets, SPA fallback). Registry items reference each other by absolute URL, baked in at build time from `REGISTRY_URL` (default `https://detent-ui.com/r`). To try the registry against a local server, build with `REGISTRY_URL=http://localhost:5173/r` but don't commit the resulting `registry.json`.
 
 ## Adding a component
 

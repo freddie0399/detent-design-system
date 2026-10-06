@@ -4,7 +4,7 @@
  *   - registry.json (the "theme" + font items, plus one item per
  *     src/components/ui/*.tsx, with deps inferred from imports)
  *
- * Usage: REGISTRY_URL=https://detent.example.com/r npm run tokens
+ * Usage: REGISTRY_URL=http://localhost:5173/r npm run tokens   (defaults to https://detent-ui.com/r)
  *        npm run tokens -- --strict   (CI: fail on contrast or palette problems in any preset)
  */
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs"
@@ -15,7 +15,7 @@ import { validatePalette } from "../tokens/palette.ts"
 
 const ROOT = path.resolve(import.meta.dirname, "..")
 const REGISTRY_NAME = "detent"
-const REGISTRY_URL = (process.env.REGISTRY_URL ?? "http://localhost:5173/r").replace(/\/$/, "")
+const REGISTRY_URL = (process.env.REGISTRY_URL ?? "https://detent-ui.com/r").replace(/\/$/, "")
 
 const tokens = createTokens(brand)
 const { root, light, dark, effects, theme } = tokens
