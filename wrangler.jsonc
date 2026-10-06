@@ -1,0 +1,12 @@
+// Cloudflare Workers static assets: serves the docs site and the registry
+// (dist/r/*.json) at https://detent-ui.com. Built by `npm run build`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "detent",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Client-side routes (/components/button…) fall back to index.html.
+    "not_found_handling": "single-page-application"
+  }
+}
